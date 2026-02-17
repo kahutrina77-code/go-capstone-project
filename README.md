@@ -28,7 +28,7 @@ git clone git@github.com:kahutrina77-code/go-capstone-project.git
 
 ### 2. Enter the project folder
 ```bash
-cd go-capstone
+cd go-capstone-project
 ```
 
 ### 3. Run the server
