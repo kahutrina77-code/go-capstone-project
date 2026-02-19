@@ -1,6 +1,6 @@
 # Getting Started with Go (Golang) – A Beginner's Toolkit 🇰🇪
 
-**By:** [Your Name]
+**By:** Trina Luseno
 **School:** Moringa School
 **Date:** February 2026
 
@@ -212,10 +212,10 @@ why developers use it, how it differs from JavaScript,
 and why it's good for beginners"
 
 **AI Response Summary:**
-[Write 3-5 bullet points of what Claude told you]
+Go is a fast, simple programming language created by Google in 2009, designed for building servers, APIs, and cloud tools. Developers choose it because it's nearly as fast as C++, handles thousands of simultaneous tasks with ease, and keeps codebases clean and readable. Unlike JavaScript, Go is statically typed and compiled, meaning bugs are caught before your code ever runs rather than at runtime. For JavaScript developers, it's an ideal second language — minimal syntax to learn, excellent built-in tools, and habits that make you a sharper programmer overall.
 
 **My Evaluation:**
-[YOUR honest rating and thoughts here ⭐⭐⭐⭐⭐]
+ ⭐⭐⭐⭐⭐- I was able to understand what go is and able to evaluate if i can learn and understand it
 
 **What I Did Next:**
 Proceeded to install Go on WSL terminal
@@ -232,10 +232,18 @@ Give me step by step installation instructions
 including PATH setup and verification"
 
 **AI Response Summary:**
-[Write 3-5 bullet points of what Claude told you]
+1. **Update Ubuntu** — Run `sudo apt update && sudo apt upgrade -y`
+2. **Download Go** — Run `wget https://go.dev/dl/go1.23.4.linux-amd64.tar.gz`
+3. **Install Go** — Run `sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.23.4.linux-amd64.tar.gz`
+4. **Set PATH** — Add these lines to `~/.bashrc` via `nano ~/.bashrc`, then run `source ~/.bashrc`
+   ```bash
+   export PATH=$PATH:/usr/local/go/bin
+   export GOPATH=$HOME/go
+   ```
+5. **Verify** — Run `go version` and you should see `go version go1.23.4 linux/amd64`
 
 **My Evaluation:**
-[YOUR honest rating and thoughts here ⭐⭐⭐⭐⭐]
+⭐⭐⭐⭐⭐-Claude provided clear steps which made it easy for go setup
 
 **What I Did Next:**
 Successfully installed Go and verified with go version command
@@ -252,10 +260,14 @@ Explain what package main means, what import fmt does,
 what func main() is, and how it differs from JavaScript"
 
 **AI Response Summary:**
-[Write 3-5 bullet points of what Claude told you]
+1. **`package main`** — Tells Go this file is a runnable program, not a reusable library. Every Go file must declare a package.
+2. **`import "fmt"`** — Brings in Go's built-in formatting package for printing. Like `require()` in Node.js but with no installation needed.
+3. **`func main()`** — The entry point Go automatically runs first, like an engine ignition. Unlike JavaScript, you never call it yourself.
+4. **`fmt.Println`** — Prints text to the terminal with a new line, just like `console.log()` in JavaScript but requires the `fmt` package explicitly.
+5. **JS difference** — JavaScript runs dynamically top-to-bottom with no required structure; Go enforces a strict entry point, explicit imports, and won't compile if you import something you don't use.
 
 **My Evaluation:**
-[YOUR honest rating and thoughts here ⭐⭐⭐⭐⭐]
+ ⭐⭐⭐⭐⭐- I was fully able to understand the function and what each command does.
 
 **What I Did Next:**
 Built on this knowledge to create a REST API
@@ -272,10 +284,15 @@ for /, /api, /about and /time. Show me complete code
 with comments. I am a beginner from JavaScript background"
 
 **AI Response Summary:**
-[Write 3-5 bullet points of what Claude told you]
+• **Complete working code** — A single `main.go` file with 4 routes (`/`, `/api`, `/about`, `/time`) using only Go's standard library, ready to run with `go run main.go`.
+
+• **Every line explained** — Detailed comments throughout comparing Go to JavaScript (e.g., `package main` vs no required structure in JS, `http.HandleFunc` vs `app.get()`, `json.Encoder` vs `JSON.stringify()`).
+
+• **Structs and JSON** — Shows how to define typed data structures with `type Response struct` and use `json:"fieldname"` tags to control JSON output keys, plus a reusable `sendJSON()` helper function.
+
 
 **My Evaluation:**
-[YOUR honest rating and thoughts here ⭐⭐⭐⭐⭐]
+ ⭐⭐⭐⭐
 
 **What I Did Next:**
 Copied the code, tested all routes in browser and curl
@@ -292,10 +309,18 @@ What do the backtick tags mean? What is http.ResponseWriter?
 How does JSON encoding work in Go?"
 
 **AI Response Summary:**
-[Write 3-5 bullet points of what Claude told you]
+• **Structs are typed data blueprints** — Like defining an object's shape before using it. `type HomeResponse struct { Success bool; Message string }` means "this data will always have these exact fields with these exact types" (unlike JavaScript where objects can have any shape).
+
+• **Backtick tags control JSON output** — The `json:"success"` tags tell Go what key names to use when converting structs to JSON. Without them, Go would output capitalized field names like `"Success"` instead of `"success"`.
+
+• **http.ResponseWriter is the response object** — It's Go's equivalent of `res` in Express.js. You write INTO it using methods like `w.Header().Set()` and `w.WriteHeader()` to build the HTTP response that gets sent back to the client.
+
+• **JSON encoding converts structs to JSON strings** — `json.NewEncoder(w).Encode(myStruct)` reads your struct, converts it to JSON format using the backtick tags, and writes it directly into the response writer. It's like doing `JSON.stringify(obj)` and `res.send()` in one step.
+
+• **Route handlers follow a strict signature** — Every handler function must be `func(w http.ResponseWriter, r *http.Request)` where `w` lets you write the response and `r` contains the incoming request data (URL, headers, body). Go won't compile if you use a different signature.
 
 **My Evaluation:**
-[YOUR honest rating and thoughts here ⭐⭐⭐⭐⭐]
+ ⭐⭐⭐⭐⭐- I was able to understand the code
 
 **What I Did Next:**
 Fully understood the code and proceeded to document it
